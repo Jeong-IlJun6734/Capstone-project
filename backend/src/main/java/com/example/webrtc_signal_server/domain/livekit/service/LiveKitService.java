@@ -1,14 +1,8 @@
 package com.example.webrtc_signal_server.domain.livekit.service;
 
 import com.example.webrtc_signal_server.domain.livekit.dto.LiveKitRequestDTO;
-
-import io.livekit.server.AccessToken;
-import io.livekit.server.RoomServiceClient;
-import io.livekit.server.VideoGrant;
-import io.livekit.server.RoomJoin;
-import io.livekit.server.RoomName;
+import io.livekit.server.*;
 import livekit.LivekitModels;
-import okhttp3.ResponseBody;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import retrofit2.Call;
@@ -18,7 +12,6 @@ import java.io.IOException;
 
 @Service
 public class LiveKitService {
-
 
     private final String host;
     private final String apiKey;
@@ -52,7 +45,6 @@ public class LiveKitService {
      * 클라이언트가 LiveKit 방에 접속하는 데 사용할 액세스 토큰을 생성합니다.
      * 이 토큰은 서버 SDK가 로컬에서 JWT 방식으로 생성하며, LiveKit 서버에 요청을 보내지 않습니다.
      */
-
     public String createLiveKitToken(LiveKitRequestDTO dto) {
         // 1. AccessToken 객체 생성 (API Key와 Secret을 사용하여 서명 준비)
         AccessToken token = new AccessToken(apiKey, apiSecret);
